@@ -13,11 +13,14 @@ function Home({ yourLocalBalance, readContracts }) {
   const purpose = useContractReader(readContracts, "YourContract", "purpose");
 
   return (
-    <div>
-          
-    <div style={{ margin: 32 }}>
+    <div style={{ display: "flex" }}>
+      <div style={{ margin: 32 }}>
         <span style={{ marginRight: 8 }}></span>
-        This is a <a target="_blank" href="https://github.com/bhargavaparoksham/scaffold-eth-lens-starter-kit">Lens Protocol starter kit</a> built using Scaffold-ETH.
+        This is a{" "}
+        <a target="_blank" href="https://github.com/bhargavaparoksham/scaffold-eth-lens-starter-kit">
+          Lens Protocol starter kit
+        </a>{" "}
+        built using Scaffold-ETH.
       </div>
       <div style={{ margin: 32 }}>
         <span style={{ marginRight: 8 }}>📝</span>
@@ -31,13 +34,13 @@ function Home({ yourLocalBalance, readContracts }) {
       </div>
       <div style={{ margin: 32 }}>
         <span style={{ marginRight: 8 }}>📝</span>
-        Note that official Lens contracts are currently deployed on Polygon Mumbai Testnet so make sure you are connected to the same network on Metamask.
+        Note that official Lens contracts are currently deployed on Polygon Mumbai Testnet so make sure you are
+        connected to the same network on Metamask.
       </div>
       <div style={{ margin: 32 }}>
         <span style={{ marginRight: 8 }}>💭</span>
         Check out the <Link to="/hints">"Hints"</Link> tab for more tips.
       </div>
-
     </div>
   );
 }
