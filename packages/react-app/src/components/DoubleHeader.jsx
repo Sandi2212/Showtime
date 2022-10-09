@@ -75,7 +75,7 @@ export default function DoubleHeader({ mainLinks, userLinks }) {
   const { classes, cx } = useStyles();
   const [active, setActive] = useState(0);
 
-  const mainItems = mainLinks.map((item, index) => (
+  const mainItems = mainLinks?.map((item, index) => (
     <Anchor
       href={item.link}
       key={item.label}
@@ -89,7 +89,7 @@ export default function DoubleHeader({ mainLinks, userLinks }) {
     </Anchor>
   ));
 
-  const secondaryItems = userLinks.map((item) => (
+  const secondaryItems = userLinks?.map((item) => (
     <Anchor
       href={item.link}
       key={item.label}
