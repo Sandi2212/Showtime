@@ -11,9 +11,10 @@ import {
 } from '@mantine/core';
 // import { IconCheck } from '@tabler/icons';
 import img2 from '../images/img2.png'
+import  img1 from '../images/img1.png'
 
 const useStyles = createStyles((theme) => ({
-  hero: {backgroundColor:'#56AEFF'},
+  hero: {backgroundColor:'#56AEFF',height:'800px'},
   inner: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -48,21 +49,31 @@ const useStyles = createStyles((theme) => ({
       flex: 1,
     },
   },
+  description: {
+    color: theme.white,
+    maxWidth: 600,
+
+    [theme.fn.smallerThan('sm')]: {
+      maxWidth: '100%',
+      fontSize: theme.fontSizes.sm,
+    },
+  },
 
   img2: {
     flex: 1,
 
     [theme.fn.smallerThan('md')]: {
       display: 'none',
+      height:'1500px'
+    },
+  },
+  img1: {
+
+    [theme.fn.smallerThan('md')]: {
+      display: 'none',
     },
   },
 
-  highlight: {
-    position: 'relative',
-    backgroundColor: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).background,
-    borderRadius: theme.radius.sm,
-    padding: '4px 12px',
-  },
 }));
 
 export default function DoubleHeader() {
@@ -72,48 +83,20 @@ export default function DoubleHeader() {
       <Container>
         <div className={classes.inner}>
           <div className={classes.content}>
-            <Title className={classes.title}>
-              A <span className={classes.highlight}>modern</span> React <br /> components library
-            </Title>
-            <Text color="dimmed" mt="md">
-              Build fully functional accessible web applications faster than ever – Mantine includes
-              more than 120 customizable components and hooks to cover you in any situation
+            <Image src={img1} className={classes.img1} />
+            <Text className={classes.description} size="xl" mt="xl">
+            A decentralized marketplace for web3 
+             educators to learn,earn and teach.
             </Text>
 
-            <List
-              mt={30}
-              spacing="sm"
-              size="sm"
-              icon={
-                <ThemeIcon size={20} radius="xl">
-                  {/* <IconCheck size={12} stroke={1.5} /> */}
-                </ThemeIcon>
-              }
-            >
-              <List.Item>
-                <b>TypeScript based</b> – build type safe applications, all components and hooks
-                export types
-              </List.Item>
-              <List.Item>
-                <b>Free and open source</b> – all packages have MIT license, you can use Mantine in
-                any project
-              </List.Item>
-              <List.Item>
-                <b>No annoying focus ring</b> – focus ring will appear only when user navigates with
-                keyboard
-              </List.Item>
-            </List>
 
             <Group mt={30}>
               <Button radius="xl" size="md" className={classes.control}>
                 Get started
               </Button>
-              <Button variant="default" radius="xl" size="md" className={classes.control}>
-                Source code
-              </Button>
             </Group>
           </div>
-          <Image src={img2} className={classes.image} />
+          <Image src={img2} className={classes.img2} />
         </div>
       </Container>
     </div>

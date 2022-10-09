@@ -20,6 +20,7 @@ import {
   GasGauge,
   Header,
   Ramp,
+  Web3page,
   ThemeSwitch,
   NetworkDisplay,
   FaucetHint,
@@ -249,6 +250,7 @@ function App(props) {
 
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>
+      
       <div className="App">
         <NetworkDisplay
           NETWORKCHECK={NETWORKCHECK}
@@ -290,7 +292,7 @@ function App(props) {
                 and give you a form to interact with it locally
             */}
             {/* pass in any web3 props to this Home component. For example, yourLocalBalance */}
-            <Home yourLocalBalance={yourLocalBalance} readContracts={readContracts} />
+            <Web3page/>
             <Contract
               name="ProfileCreationProxy"
               price={price}

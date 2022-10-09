@@ -1,5 +1,6 @@
 export { default as Account } from "./Account";
 export { default as DoubleHeader } from "./DoubleHeader";
+export { default as Web3page } from "./Web3page";
 export { default as Address } from "./Address";
 export { default as AddressInput } from "./AddressInput";
 export { default as Balance } from "./Balance";
