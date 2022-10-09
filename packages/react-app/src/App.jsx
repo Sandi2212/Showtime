@@ -34,7 +34,7 @@ import deployedContracts from "./contracts/hardhat_contracts.json";
 import { Transactor, Web3ModalSetup } from "./helpers";
 import { Home, ExampleUI, Hints, Subgraph } from "./views";
 import { useStaticJsonRPC } from "./hooks";
-
+import chooseHub from "./images/chooseHub.png";
 const { ethers } = require("ethers");
 /*
     Welcome to 🏗 scaffold-eth !
@@ -250,7 +250,6 @@ function App(props) {
 
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>
-      
       <div className="App">
         <NetworkDisplay
           NETWORKCHECK={NETWORKCHECK}
@@ -285,14 +284,14 @@ function App(props) {
           <Route exact path="/">
             <DoubleHeader />
           </Route>
-          <Route exact path="/debug">
+          <Route exact path="/bounties">
             {/*
                 🎛 this scaffolding is full of commonly used components
                 this <Contract/> component will automatically parse your ABI
                 and give you a form to interact with it locally
             */}
             {/* pass in any web3 props to this Home component. For example, yourLocalBalance */}
-            <Web3page/>
+            <Web3page />
             <Contract
               name="ProfileCreationProxy"
               price={price}
@@ -321,13 +320,10 @@ function App(props) {
               contractConfig={contractConfig}
             />
           </Route>
-          <Route path="/hints">
-            <Hints
-              address={address}
-              yourLocalBalance={yourLocalBalance}
-              mainnetProvider={mainnetProvider}
-              price={price}
-            />
+          <Route path="/chooseHub">
+            <Link to="/bounties">
+              <img src={chooseHub} alt="choosHub" width={"100%"}></img>
+            </Link>
           </Route>
           <Route path="/exampleui">
             <ExampleUI
