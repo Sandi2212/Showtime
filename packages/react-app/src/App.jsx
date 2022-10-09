@@ -35,6 +35,9 @@ import { Transactor, Web3ModalSetup } from "./helpers";
 import { Home, ExampleUI, Hints, Subgraph } from "./views";
 import { useStaticJsonRPC } from "./hooks";
 import chooseHub from "./images/chooseHub.png";
+import MintCert from "./images/MintCert.png";
+import Bounties from "./images/Bounties.png";
+import Web3Natives from "./images/Web3Natives.png";
 const { ethers } = require("ethers");
 /*
     Welcome to 🏗 scaffold-eth !
@@ -264,45 +267,24 @@ function App(props) {
           <Route exact path="/">
             <DoubleHeader />
           </Route>
-          <Route exact path="/bounties">
-            {/*
-                🎛 this scaffolding is full of commonly used components
-                this <Contract/> component will automatically parse your ABI
-                and give you a form to interact with it locally
-            */}
-            {/* pass in any web3 props to this Home component. For example, yourLocalBalance */}
-            <Web3page />
-            <Contract
-              name="ProfileCreationProxy"
-              price={price}
-              signer={userSigner}
-              provider={localProvider}
-              address={address}
-              blockExplorer={blockExplorer}
-              contractConfig={contractConfig}
-            />
-            <Contract
-              name="LensHubProxy"
-              price={price}
-              signer={userSigner}
-              provider={localProvider}
-              address={address}
-              blockExplorer={blockExplorer}
-              contractConfig={contractConfig}
-            />
-            <Contract
-              name="LensHubImplementation"
-              price={price}
-              signer={userSigner}
-              provider={localProvider}
-              address={address}
-              blockExplorer={blockExplorer}
-              contractConfig={contractConfig}
-            />
-          </Route>
           <Route path="/chooseHub">
             <Link to="/bounties">
               <img src={chooseHub} alt="choosHub" width={"100%"}></img>
+            </Link>
+          </Route>
+          <Route exact path="/bounties">
+            <Link to="/cert">
+              <img src={Web3Natives} alt="bounties" width={"100%"}></img>
+            </Link>
+          </Route>
+          <Route path="/cert">
+            <Link to="/profile">
+              <img src={MintCert} alt="Mint" width={"100%"}></img>
+            </Link>
+          </Route>
+          <Route path="/profile">
+            <Link to="/">
+              <img src={Bounties} alt="Mint" width={"100%"}></img>
             </Link>
           </Route>
           <Route path="/exampleui">
