@@ -1,3 +1,4 @@
+import { MantineProvider } from '@mantine/core';
 import { Button, Col, Menu, Row } from "antd";
 import "antd/dist/antd.css";
 import {
@@ -23,6 +24,7 @@ import {
   NetworkDisplay,
   FaucetHint,
   NetworkSwitch,
+  DoubleHeader
 } from "./components";
 import { NETWORKS, ALCHEMY_KEY } from "./constants";
 import externalContracts from "./contracts/external_contracts";
@@ -246,9 +248,12 @@ function App(props) {
   const faucetAvailable = localProvider && localProvider.connection && targetNetwork.name.indexOf("local") !== -1;
 
   return (
+    <MantineProvider withGlobalStyles withNormalizeCSS>
+     
     <div className="App">
-      {/* ✏️ Edit the header and change the title to your project name */}
-      <Header />
+      ✏️ Edit the header and change the title to your project name
+     
+<DoubleHeader/>
       <NetworkDisplay
         NETWORKCHECK={NETWORKCHECK}
         localChainId={localChainId}
@@ -447,6 +452,7 @@ function App(props) {
         </Row>
       </div>
     </div>
+    </MantineProvider>
   );
 }
 

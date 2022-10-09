@@ -1,8 +1,6 @@
 import { useContractReader } from "eth-hooks";
-import { ethers } from "ethers";
 import React from "react";
 import { Link } from "react-router-dom";
-
 /**
  * web3 props can be passed from '../App.jsx' into your local view component for use
  * @param {*} yourLocalBalance balance on current network
@@ -16,6 +14,7 @@ function Home({ yourLocalBalance, readContracts }) {
 
   return (
     <div>
+          
     <div style={{ margin: 32 }}>
         <span style={{ marginRight: 8 }}></span>
         This is a <a target="_blank" href="https://github.com/bhargavaparoksham/scaffold-eth-lens-starter-kit">Lens Protocol starter kit</a> built using Scaffold-ETH.

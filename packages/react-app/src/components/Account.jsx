@@ -58,6 +58,8 @@ export default function Account({
 }) {
   const { currentTheme } = useThemeSwitcher();
 
+  
+
   const modalButtons = [];
   if (web3Modal) {
     if (web3Modal.cachedProvider) {
