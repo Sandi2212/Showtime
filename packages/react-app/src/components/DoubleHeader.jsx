@@ -1,116 +1,121 @@
-import { useState } from 'react';
-import { createStyles, Header, Container, Anchor, Group, Burger } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-
-
-const HEADER_HEIGHT = 84;
+import {
+  createStyles,
+  Image,
+  Container,
+  Title,
+  Button,
+  Group,
+  Text,
+  List,
+  ThemeIcon,
+} from '@mantine/core';
+// import { IconCheck } from '@tabler/icons';
+import img2 from '../images/img2.png'
 
 const useStyles = createStyles((theme) => ({
+  hero: {backgroundColor:'#56AEFF'},
   inner: {
-    height: HEADER_HEIGHT,
     display: 'flex',
-    alignItems: 'center',
     justifyContent: 'space-between',
+    paddingTop: theme.spacing.xl * 4,
+    paddingBottom: theme.spacing.xl * 4,
   },
 
-  burger: {
-    [theme.fn.largerThan('sm')]: {
-      display: 'none',
+  content: {
+    maxWidth: 480,
+    marginRight: theme.spacing.xl * 3,
+
+    [theme.fn.smallerThan('md')]: {
+      maxWidth: '100%',
+      marginRight: 0,
     },
   },
 
-  links: {
-    paddingTop: theme.spacing.lg,
-    height: HEADER_HEIGHT,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-
-    [theme.fn.smallerThan('sm')]: {
-      display: 'none',
-    },
-  },
-
-  mainLinks: {
-    marginRight: -theme.spacing.sm,
-  },
-
-  mainLink: {
-    textTransform: 'uppercase',
-    fontSize: 13,
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[6],
-    padding: `7px ${theme.spacing.sm}px`,
-    fontWeight: 700,
-    borderBottom: '2px solid transparent',
-    transition: 'border-color 100ms ease, color 100ms ease',
-
-    '&:hover': {
-      color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-      textDecoration: 'none',
-    },
-  },
-
-  secondaryLink: {
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[2] : theme.colors.gray[6],
-    fontSize: theme.fontSizes.xs,
-    textTransform: 'uppercase',
-    transition: 'color 100ms ease',
-
-    '&:hover': {
-      color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-      textDecoration: 'none',
-    },
-  },
-
-  mainLinkActive: {
+  title: {
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-    borderBottomColor: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 5 : 6],
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    fontSize: 44,
+    lineHeight: 1.2,
+    fontWeight: 900,
+
+    [theme.fn.smallerThan('xs')]: {
+      fontSize: 28,
+    },
+  },
+
+  control: {
+    [theme.fn.smallerThan('xs')]: {
+      flex: 1,
+    },
+  },
+
+  img2: {
+    flex: 1,
+
+    [theme.fn.smallerThan('md')]: {
+      display: 'none',
+    },
+  },
+
+  highlight: {
+    position: 'relative',
+    backgroundColor: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).background,
+    borderRadius: theme.radius.sm,
+    padding: '4px 12px',
   },
 }));
 
-
-export default function DoubleHeader({ mainLinks, userLinks }) {
-  console.log('test')
-  const [opened, { toggle }] = useDisclosure(false);
-  const { classes, cx } = useStyles();
-  const [active, setActive] = useState(0);
-
-  const mainItems = mainLinks?.map((item, index) => (
-    <Anchor
-      href={item.link}
-      key={item.label}
-      className={cx(classes.mainLink, { [classes.mainLinkActive]: index === active })}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(index);
-      }}
-    >
-      {item.label}
-    </Anchor>
-  ));
-
-  const secondaryItems = userLinks?.map((item) => (
-    <Anchor
-      href={item.link}
-      key={item.label}
-      onClick={(event) => event.preventDefault()}
-      className={classes.secondaryLink}
-    >
-      {item.label}
-    </Anchor>
-  ));
-
+export default function DoubleHeader() {
+  const { classes } = useStyles();
   return (
-    <Header height={HEADER_HEIGHT} mb={120}>
-      <Container className={classes.inner}>
-        <div className={classes.links}>
-          <Group position="right">{secondaryItems}</Group>
-          <Group spacing={0} position="right" className={classes.mainLinks}>
-            {mainItems}
-          </Group>
+    <div className={classes.hero}>
+      <Container>
+        <div className={classes.inner}>
+          <div className={classes.content}>
+            <Title className={classes.title}>
+              A <span className={classes.highlight}>modern</span> React <br /> components library
+            </Title>
+            <Text color="dimmed" mt="md">
+              Build fully functional accessible web applications faster than ever – Mantine includes
+              more than 120 customizable components and hooks to cover you in any situation
+            </Text>
+
+            <List
+              mt={30}
+              spacing="sm"
+              size="sm"
+              icon={
+                <ThemeIcon size={20} radius="xl">
+                  {/* <IconCheck size={12} stroke={1.5} /> */}
+                </ThemeIcon>
+              }
+            >
+              <List.Item>
+                <b>TypeScript based</b> – build type safe applications, all components and hooks
+                export types
+              </List.Item>
+              <List.Item>
+                <b>Free and open source</b> – all packages have MIT license, you can use Mantine in
+                any project
+              </List.Item>
+              <List.Item>
+                <b>No annoying focus ring</b> – focus ring will appear only when user navigates with
+                keyboard
+              </List.Item>
+            </List>
+
+            <Group mt={30}>
+              <Button radius="xl" size="md" className={classes.control}>
+                Get started
+              </Button>
+              <Button variant="default" radius="xl" size="md" className={classes.control}>
+                Source code
+              </Button>
+            </Group>
+          </div>
+          <Image src={img2} className={classes.image} />
         </div>
-        <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
       </Container>
-    </Header>
+    </div>
   );
 }

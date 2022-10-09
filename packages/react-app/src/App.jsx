@@ -250,10 +250,8 @@ function App(props) {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>
      
-    <div className="App">
-      ✏️ Edit the header and change the title to your project name
-     
-<DoubleHeader/>
+    <div className="App"> 
+      <DoubleHeader/>
       <NetworkDisplay
         NETWORKCHECK={NETWORKCHECK}
         localChainId={localChainId}
